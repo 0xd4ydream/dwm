@@ -61,6 +61,9 @@ static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont,
 static const char *termcmd[]  = { "urxvt", NULL };
 static const char *brightnessup[] = { "brightnessctl", "s", "5%+", NULL };
 static const char *brightnessdown[] = { "brightnessctl", "s", "5%-", NULL };
+static const char *volumeup[] = { "amixer", "sset", "Master", "2%+", "-q", NULL };
+static const char *volumedown[] = { "amixer", "sset", "Master", "2%-", "-q", NULL };
+static const char *volumemute[] = { "amixer", "sset", "Master", "0%", "-q", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        		function        	argument */
@@ -97,8 +100,11 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,      		                	7)
 	TAGKEYS(                        XK_9,      		                	8)
 	{ MODKEY|ShiftMask,             XK_q,      		quit,           	{0} },
-	{ MODKEY,                       XK_bracketright, 	spawn,       		{.v = brightnessup } },
-	{ MODKEY,                       XK_bracketleft, 	spawn,       		{.v = brightnessdown } },
+	{ MODKEY|ShiftMask,             XK_bracketleft, 	spawn,       		{.v = brightnessdown } },
+	{ MODKEY|ShiftMask,             XK_bracketright, 	spawn,       		{.v = brightnessup } },
+	{ MODKEY,                       XK_bracketleft, 	spawn,       		{.v = volumedown } },
+	{ MODKEY,                       XK_bracketright, 	spawn,       		{.v = volumeup } },
+	{ MODKEY,                       XK_backslash, 		spawn,       		{.v = volumemute } },
 };
 
 /* button definitions */
