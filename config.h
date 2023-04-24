@@ -64,6 +64,7 @@ static const char *brightnessdown[] = { "brightnessctl", "s", "5%-", NULL };
 static const char *volumeup[] = { "amixer", "sset", "Master", "2%+", "-q", NULL };
 static const char *volumedown[] = { "amixer", "sset", "Master", "2%-", "-q", NULL };
 static const char *volumemute[] = { "amixer", "sset", "Master", "0%", "-q", NULL };
+static const char *firefox[] = { "firefox", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        		function        	argument */
@@ -105,6 +106,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_bracketleft, 	spawn,       		{.v = volumedown } },
 	{ MODKEY,                       XK_bracketright, 	spawn,       		{.v = volumeup } },
 	{ MODKEY,                       XK_backslash, 		spawn,       		{.v = volumemute } },
+	{ MODKEY|ShiftMask,              XK_t, 			spawn,       		{.v = firefox } },
 };
 
 /* button definitions */
